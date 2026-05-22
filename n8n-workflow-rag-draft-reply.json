@@ -522,3 +522,108 @@
               "name": "text",
               "value": "={{$json[\"text\"]}}",
               "type": "string"
+            },
+            {
+              "id": "c4f205f3-382f-4a18-ab8d-2244f0f2e415",
+              "name": "category",
+              "value": "={{$json[\"category\"]}}",
+              "type": "string"
+            },
+            {
+              "id": "5c1e97c7-f440-4279-881a-0e948ce52de8",
+              "name": "timestamp",
+              "value": "={{$now.setZone('Asia/Kolkata').toFormat('yyyy-MM-dd HH:mm:ss')}}",
+              "type": "string"
+            },
+            {
+              "id": "873b1d9b-ac32-41d8-a09e-8cf7006ad248",
+              "name": "email",
+              "value": "={{$json[\"email\"]}}",
+              "type": "string"
+            },
+            {
+              "id": "d0e43293-6bfe-41a6-ae4b-4181b40fb036",
+              "name": "status",
+              "value": "open",
+              "type": "string"
+            },
+            {
+              "id": "e3153714-5f16-430e-ad7d-8f06b19e8024",
+              "name": "assigned_to",
+              "value": "hardware_team",
+              "type": "string"
+            },
+            {
+              "id": "draft-reply-field-added",
+              "name": "draft_reply",
+              "value": "={{$json[\"draft_reply\"]}}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -352,
+        656
+      ],
+      "id": "2971e7b6-1b01-40ae-82d5-d80764fcef65",
+      "name": "Edit Fields5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d4069dc7-86af-4a84-8068-c96820537f70",
+              "name": "text",
+              "value": "={{$json[\"text\"]}}",
+              "type": "string"
+            },
+            {
+              "id": "c4f205f3-382f-4a18-ab8d-2244f0f2e415",
+              "name": "category",
+              "value": "={{$json[\"category\"]}}",
+              "type": "string"
+            },
+            {
+              "id": "5c1e97c7-f440-4279-881a-0e948ce52de8",
+              "name": "timestamp",
+              "value": "={{$now.setZone('Asia/Kolkata').toFormat('yyyy-MM-dd HH:mm:ss')}}",
+              "type": "string"
+            },
+            {
+              "id": "873b1d9b-ac32-41d8-a09e-8cf7006ad248",
+              "name": "email",
+              "value": "={{$json[\"email\"]}}",
+              "type": "string"
+            },
+            {
+              "id": "d0e43293-6bfe-41a6-ae4b-4181b40fb036",
+              "name": "status",
+              "value": "open",
+              "type": "string"
+            },
+            {
+              "id": "e3153714-5f16-430e-ad7d-8f06b19e8024",
+              "name": "assigned_to",
+              "value": "software_team",
+              "type": "string"
+            },
+            {
+              "id": "draft-reply-field-added",
+              "name": "draft_reply",
+              "value": "={{$json[\"draft_reply\"]}}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
