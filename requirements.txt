@@ -1,0 +1,5 @@
+django
+groq
+mysqlclient
+python-dotenv
+chromadb
