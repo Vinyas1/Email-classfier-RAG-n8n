@@ -627,3 +627,108 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
+        -272,
+        1056
+      ],
+      "id": "ec3d88f7-1fc9-44b5-8a7b-cd5bde5a54f0",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d4069dc7-86af-4a84-8068-c96820537f70",
+              "name": "text",
+              "value": "={{$json[\"text\"]}}",
+              "type": "string"
+            },
+            {
+              "id": "c4f205f3-382f-4a18-ab8d-2244f0f2e415",
+              "name": "category",
+              "value": "={{$json[\"category\"]}}",
+              "type": "string"
+            },
+            {
+              "id": "5c1e97c7-f440-4279-881a-0e948ce52de8",
+              "name": "timestamp",
+              "value": "={{$now.setZone('Asia/Kolkata').toFormat('yyyy-MM-dd HH:mm:ss')}}",
+              "type": "string"
+            },
+            {
+              "id": "873b1d9b-ac32-41d8-a09e-8cf7006ad248",
+              "name": "email",
+              "value": "={{$json[\"email\"]}}",
+              "type": "string"
+            },
+            {
+              "id": "d0e43293-6bfe-41a6-ae4b-4181b40fb036",
+              "name": "status",
+              "value": "open",
+              "type": "string"
+            },
+            {
+              "id": "e3153714-5f16-430e-ad7d-8f06b19e8024",
+              "name": "assigned_to",
+              "value": "access_team",
+              "type": "string"
+            },
+            {
+              "id": "draft-reply-field-added",
+              "name": "draft_reply",
+              "value": "={{$json[\"draft_reply\"]}}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -640,
+        1504
+      ],
+      "id": "a821e47d-86c7-42ad-a811-b98f205635e2",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "tickets",
+          "mode": "name"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "text",
+              "value": "={{$json[\"text\"]}}"
+            },
+            {
+              "column": "category",
+              "value": "={{$json[\"category\"]}}"
+            },
+            {
+              "column": "timestamp",
+              "value": "={{$json[\"timestamp\"]}}"
+            },
+            {
+              "column": "email",
+              "value": "={{$json[\"email\"]}}"
+            },
+            {
+              "column": "status",
+              "value": "open"
+            },
+            {
+              "column": "assigned_to",
+              "value": "={{$json[\"assigned_to\"]}}"
+            },
+            {
+              "column": "draft_reply",
+              "value": "={{$json[\"draft_reply\"]}}"
+            }
+          ]
