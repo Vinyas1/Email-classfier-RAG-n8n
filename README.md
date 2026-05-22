@@ -59,3 +59,15 @@ python manage.py build_kb
 ```
 A sample (`vpn-reset-procedure.md`) is included to show the expected format.
 
+## Every Day
+```
+venv\Scripts\activate
+cd django_project
+python manage.py runserver
+```
+And `n8n start` in a second terminal.
+
+## Categories
+- network  â†’ WiFi, internet, VPN connectivity, network drops
+- hardware â†’ laptop, printer, monitor, battery, physical devices
+- software â†’ apps, ERP, crash, Teams, Zoom, Excel, browser
