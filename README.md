@@ -35,3 +35,15 @@ python manage.py build_kb
 ```
 This embeds every row of `dataset/tickets.csv` plus any `.txt`/`.md` files in
 `django_project/knowledge_base/docs/` into a local Chroma vector store at
+`django_project/chroma_db/` (gitignored â€” rebuild it on each machine, don't commit it).
+
+### 5. Run Django
+```
+python manage.py migrate
+python manage.py runserver
+```
+
+### 6. Start n8n (separate terminal)
+```
+n8n start
+```
