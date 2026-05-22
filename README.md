@@ -11,3 +11,15 @@ n8n + Django + Groq (Llama 3) + Chroma
 ### 1. Create & activate virtual environment
 ```
 python -m venv venv
+venv\Scripts\activate        # Windows
+source venv/bin/activate     # Mac/Linux
+```
+
+### 2. Install dependencies
+```
+pip install -r requirements.txt
+```
+
+### 3. Add your Groq API key
+- Go to https://console.groq.com, sign up, create a free API key
+- Copy `.env.example` to `.env` in the project root
