@@ -732,3 +732,108 @@
               "value": "={{$json[\"draft_reply\"]}}"
             }
           ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.5,
+      "position": [
+        0,
+        880
+      ],
+      "id": "50d1f3b5-e932-4a97-831d-6b0f2bd2afa6",
+      "name": "Insert rows in a table",
+      "credentials": {
+        "mySql": {
+          "id": "oara3J49dthlRC0P",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "tickets",
+          "mode": "name"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "text",
+              "value": "={{$json[\"text\"]}}"
+            },
+            {
+              "column": "category",
+              "value": "={{$json[\"category\"]}}"
+            },
+            {
+              "column": "timestamp",
+              "value": "={{$json[\"timestamp\"]}}"
+            },
+            {
+              "column": "email",
+              "value": "={{$json[\"email\"]}}"
+            },
+            {
+              "column": "status",
+              "value": "open"
+            },
+            {
+              "column": "assigned_to",
+              "value": "={{$json[\"assigned_to\"]}}"
+            },
+            {
+              "column": "draft_reply",
+              "value": "={{$json[\"draft_reply\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.5,
+      "position": [
+        -112,
+        1312
+      ],
+      "id": "75e15a35-6cf6-4855-a025-95f6af2b75c9",
+      "name": "Insert rows in a table5",
+      "credentials": {
+        "mySql": {
+          "id": "oara3J49dthlRC0P",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "tickets",
+          "mode": "name"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "text",
+              "value": "={{$json[\"text\"]}}"
+            },
+            {
+              "column": "category",
+              "value": "={{$json[\"category\"]}}"
+            },
+            {
+              "column": "timestamp",
+              "value": "={{$json[\"timestamp\"]}}"
+            },
+            {
+              "column": "email",
+              "value": "={{$json[\"email\"]}}"
+            },
+            {
+              "column": "status",
+              "value": "open"
+            },
