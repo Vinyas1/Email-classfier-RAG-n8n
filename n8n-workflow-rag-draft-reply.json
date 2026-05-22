@@ -418,3 +418,107 @@
         -784,
         656
       ],
+      "id": "f9b49233-2e38-44cd-a40a-ecff4bff348d",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "operation": "reply",
+        "messageId": "={{$node[\"Gmail Trigger\"].json[\"id\"]}}",
+        "message": "=<!DOCTYPE html>\n<html>\n<body style=\"margin:0; padding:0; background:#020617; font-family:Segoe UI, Arial;\">\n\n  <table width=\"100%\" style=\"padding:40px 0;\">\n    <tr>\n      <td align=\"center\">\n\n        <table width=\"600\" style=\"background:#0f172a; border-radius:16px; color:white; padding:30px;\">\n\n          <tr>\n            <td>\n\n              <h2 style=\"color:#38bdf8;\">Your ticket has been created</h2>\n\n              <p style=\"color:#cbd5f5;\">\n                Hi there, here's our response to your request:\n              </p>\n\n              <div style=\"\n                margin:20px 0;\n                padding:15px;\n                background:#1e293b;\n                border-radius:10px;\n                border:1px solid #334155;\n                white-space:pre-wrap;\n                color:#e2e8f0;\">\n                {{$json[\"draft_reply\"]}}\n              </div>\n\n              <p style=\"color:#94a3b8;\">\n                Category: <b>{{$json[\"category\"]}}</b><br>\n                Assigned team: <b>{{$json[\"assigned_to\"]}}</b><br>\n                Status: <b style=\"color:#22c55e;\">{{$json[\"status\"]}}</b>\n              </p>\n\n              <hr style=\"border:none; border-top:1px solid #334155; margin:20px 0;\">\n\n              <p style=\"font-size:12px; color:#64748b;\">\n                This reply was drafted automatically and reviewed by our routing system.\n                Please reply to this email if you need further help.\n              </p>\n\n            </td>\n          </tr>\n\n        </table>\n\n      </td>\n    </tr>\n  </table>\n\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        -16,
+        400
+      ],
+      "id": "ad5d4cab-c754-4808-988c-6af58d481d5f",
+      "name": "Reply to a message",
+      "webhookId": "b3a61c82-96be-4163-af71-25e24632d0b0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "DIn6tV0VHSSWVFUH",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "reply",
+        "messageId": "={{$node[\"Gmail Trigger\"].json[\"id\"]}}",
+        "message": "=<!DOCTYPE html>\n<html>\n<body style=\"margin:0; padding:0; background:#020617; font-family:Segoe UI, Arial;\">\n\n  <table width=\"100%\" style=\"padding:40px 0;\">\n    <tr>\n      <td align=\"center\">\n\n        <table width=\"600\" style=\"background:#0f172a; border-radius:16px; color:white; padding:30px;\">\n\n          <tr>\n            <td>\n\n              <h2 style=\"color:#38bdf8;\">Your ticket has been created</h2>\n\n              <p style=\"color:#cbd5f5;\">\n                Hi there, here's our response to your request:\n              </p>\n\n              <div style=\"\n                margin:20px 0;\n                padding:15px;\n                background:#1e293b;\n                border-radius:10px;\n                border:1px solid #334155;\n                white-space:pre-wrap;\n                color:#e2e8f0;\">\n                {{$json[\"draft_reply\"]}}\n              </div>\n\n              <p style=\"color:#94a3b8;\">\n                Category: <b>{{$json[\"category\"]}}</b><br>\n                Assigned team: <b>{{$json[\"assigned_to\"]}}</b><br>\n                Status: <b style=\"color:#22c55e;\">{{$json[\"status\"]}}</b>\n              </p>\n\n              <hr style=\"border:none; border-top:1px solid #334155; margin:20px 0;\">\n\n              <p style=\"font-size:12px; color:#64748b;\">\n                This reply was drafted automatically and reviewed by our routing system.\n                Please reply to this email if you need further help.\n              </p>\n\n            </td>\n          </tr>\n\n        </table>\n\n      </td>\n    </tr>\n  </table>\n\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        288,
+        768
+      ],
+      "id": "3b761752-fa3f-4b6b-824b-112b43093bb0",
+      "name": "Reply to a message1",
+      "webhookId": "b3a61c82-96be-4163-af71-25e24632d0b0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "DIn6tV0VHSSWVFUH",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "reply",
+        "messageId": "={{$node[\"Gmail Trigger\"].json[\"id\"]}}",
+        "message": "=<!DOCTYPE html>\n<html>\n<body style=\"margin:0; padding:0; background:#020617; font-family:Segoe UI, Arial;\">\n\n  <table width=\"100%\" style=\"padding:40px 0;\">\n    <tr>\n      <td align=\"center\">\n\n        <table width=\"600\" style=\"background:#0f172a; border-radius:16px; color:white; padding:30px;\">\n\n          <tr>\n            <td>\n\n              <h2 style=\"color:#38bdf8;\">Your ticket has been created</h2>\n\n              <p style=\"color:#cbd5f5;\">\n                Hi there, here's our response to your request:\n              </p>\n\n              <div style=\"\n                margin:20px 0;\n                padding:15px;\n                background:#1e293b;\n                border-radius:10px;\n                border:1px solid #334155;\n                white-space:pre-wrap;\n                color:#e2e8f0;\">\n                {{$json[\"draft_reply\"]}}\n              </div>\n\n              <p style=\"color:#94a3b8;\">\n                Category: <b>{{$json[\"category\"]}}</b><br>\n                Assigned team: <b>{{$json[\"assigned_to\"]}}</b><br>\n                Status: <b style=\"color:#22c55e;\">{{$json[\"status\"]}}</b>\n              </p>\n\n              <hr style=\"border:none; border-top:1px solid #334155; margin:20px 0;\">\n\n              <p style=\"font-size:12px; color:#64748b;\">\n                This reply was drafted automatically and reviewed by our routing system.\n                Please reply to this email if you need further help.\n              </p>\n\n            </td>\n          </tr>\n\n        </table>\n\n      </td>\n    </tr>\n  </table>\n\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        320,
+        1280
+      ],
+      "id": "f34635a3-db4e-4277-927e-730f6311aa90",
+      "name": "Reply to a message2",
+      "webhookId": "b3a61c82-96be-4163-af71-25e24632d0b0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "DIn6tV0VHSSWVFUH",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "reply",
+        "messageId": "={{$node[\"Gmail Trigger\"].json[\"id\"]}}",
+        "message": "=<!DOCTYPE html>\n<html>\n<body style=\"margin:0; padding:0; background:#020617; font-family:Segoe UI, Arial;\">\n\n  <table width=\"100%\" style=\"padding:40px 0;\">\n    <tr>\n      <td align=\"center\">\n\n        <table width=\"600\" style=\"background:#0f172a; border-radius:16px; color:white; padding:30px;\">\n\n          <tr>\n            <td>\n\n              <h2 style=\"color:#38bdf8;\">Your ticket has been created</h2>\n\n              <p style=\"color:#cbd5f5;\">\n                Hi there, here's our response to your request:\n              </p>\n\n              <div style=\"\n                margin:20px 0;\n                padding:15px;\n                background:#1e293b;\n                border-radius:10px;\n                border:1px solid #334155;\n                white-space:pre-wrap;\n                color:#e2e8f0;\">\n                {{$json[\"draft_reply\"]}}\n              </div>\n\n              <p style=\"color:#94a3b8;\">\n                Category: <b>{{$json[\"category\"]}}</b><br>\n                Assigned team: <b>{{$json[\"assigned_to\"]}}</b><br>\n                Status: <b style=\"color:#22c55e;\">{{$json[\"status\"]}}</b>\n              </p>\n\n              <hr style=\"border:none; border-top:1px solid #334155; margin:20px 0;\">\n\n              <p style=\"font-size:12px; color:#64748b;\">\n                This reply was drafted automatically and reviewed by our routing system.\n                Please reply to this email if you need further help.\n              </p>\n\n            </td>\n          </tr>\n\n        </table>\n\n      </td>\n    </tr>\n  </table>\n\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        176,
+        1760
+      ],
+      "id": "00888341-50a5-483b-9cc3-88be17d72953",
+      "name": "Reply to a message3",
+      "webhookId": "b3a61c82-96be-4163-af71-25e24632d0b0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "DIn6tV0VHSSWVFUH",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d4069dc7-86af-4a84-8068-c96820537f70",
+              "name": "text",
+              "value": "={{$json[\"text\"]}}",
+              "type": "string"
