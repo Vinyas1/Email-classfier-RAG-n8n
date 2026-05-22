@@ -47,3 +47,15 @@ python manage.py runserver
 ```
 n8n start
 ```
+
+## Endpoints
+- `POST http://127.0.0.1:8000/api/predict/` â€” `{"text": "..."}` â†’ `{"category": "..."}`
+- `POST http://127.0.0.1:8000/api/draft-reply/` â€” `{"text": "..."}` â†’ `{"category", "draft_reply", "sources"}`
+
+## Adding your own SOPs / FAQ docs
+Drop `.txt` or `.md` files into `django_project/knowledge_base/docs/`, then re-run:
+```
+python manage.py build_kb
+```
+A sample (`vpn-reset-procedure.md`) is included to show the expected format.
+
