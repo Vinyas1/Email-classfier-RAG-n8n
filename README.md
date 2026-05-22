@@ -71,3 +71,15 @@ And `n8n start` in a second terminal.
 - network  â†’ WiFi, internet, VPN connectivity, network drops
 - hardware â†’ laptop, printer, monitor, battery, physical devices
 - software â†’ apps, ERP, crash, Teams, Zoom, Excel, browser
+- access   â†’ password, account locked, permissions, MFA
+- unclassified â†’ Groq could not determine category (rare)
+
+## File Structure
+```
+email-classifier-rag/
+â”œâ”€â”€ dataset/
+â”‚   â””â”€â”€ tickets.csv
+â”œâ”€â”€ django_project/
+â”‚   â”œâ”€â”€ django_project/        â† Django settings, urls
+â”‚   â”œâ”€â”€ knowledge_base/
+â”‚   â”‚   â””â”€â”€ docs/               â† drop your SOPs/FAQs here
