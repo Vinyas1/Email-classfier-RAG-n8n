@@ -103,3 +103,108 @@
             },
             {
               "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "ad14c795-c834-4376-abfe-19c8519b6982",
+                    "leftValue": "={{$json[\"category\"]}}",
+                    "rightValue": "access",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -528,
+        640
+      ],
+      "id": "9f80bfcd-b187-4484-976c-c961a887a50a",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "sendTo": "vinyassk@gmail.com",
+        "subject": "New complaint received:",
+        "message": "=<!DOCTYPE html>\n<html>\n<body style=\"margin:0; padding:0; background:#0f172a; font-family:Segoe UI, Arial, sans-serif;\">\n\n  <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"padding:40px 0;\">\n    <tr>\n      <td align=\"center\">\n\n        <!-- Main Card -->\n        <table width=\"600\" cellspacing=\"0\" cellpadding=\"0\" \n        style=\"background:#ffffff; border-radius:16px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.2);\">\n\n          <!-- Header -->\n          <tr>\n            <td style=\"background:linear-gradient(135deg,#6366f1,#3b82f6); padding:25px; color:white;\">\n              <h1 style=\"margin:0; font-size:22px;\">\ud83d\ude80 Helpdesk AI System</h1>\n              <p style=\"margin:5px 0 0; opacity:0.9;\">New Ticket Created</p>\n            </td>\n          </tr>\n\n          <!-- Body -->\n          <tr>\n            <td style=\"padding:25px; color:#1e293b;\">\n\n              <!-- Complaint -->\n              <p style=\"margin:0; font-weight:bold; color:#475569;\">\ud83d\udcdd Complaint</p>\n              <div style=\"\n                margin-top:8px;\n                padding:15px;\n                background:#f1f5f9;\n                border-left:5px solid #3b82f6;\n                border-radius:8px;\n                font-size:14px;\">\n                {{$json[\"text\"]}}\n              </div>\n\n              <!-- Info Table -->\n              <table width=\"100%\" style=\"margin-top:20px; font-size:14px;\">\n                <tr>\n                  <td style=\"padding:10px; background:#f8fafc; border-radius:8px;\">\n                    <b>\ud83d\udcc2 Category</b><br>\n                    <span style=\"color:#3b82f6; font-weight:bold;\">\n                      {{$json[\"category\"]}}\n                    </span>\n                  </td>\n\n                  <td style=\"width:10px;\"></td>\n\n                  <td style=\"padding:10px; background:#f8fafc; border-radius:8px;\">\n                    <b>\ud83d\udce7 Customer</b><br>\n                    <span style=\"color:#334155;\">\n                      {{$json[\"email\"]}}\n                    </span>\n                  </td>\n                </tr>\n\n                <tr><td colspan=\"3\" style=\"height:10px;\"></td></tr>\n\n                <tr>\n                  <td style=\"padding:10px; background:#f8fafc; border-radius:8px;\">\n                    <b>\ud83d\udc68\u200d\ud83d\udcbb Assigned To</b><br>\n                    <span style=\"color:#6366f1; font-weight:bold;\">\n                      {{$json[\"assigned_to\"]}}\n                    </span>\n                  </td>\n\n                  <td></td>\n\n                  <td style=\"padding:10px; background:#f8fafc; border-radius:8px;\">\n                    <b>\u23f0 Timestamp</b><br>\n                    <span style=\"color:#64748b;\">\n                      {{$json[\"timestamp\"]}}\n                    </span>\n                  </td>\n                </tr>\n              </table>\n\n              <!-- Status Badge -->\n              <div style=\"margin-top:20px;\">\n                <span style=\"\n                  background:#22c55e;\n                  color:white;\n                  padding:8px 16px;\n                  border-radius:20px;\n                  font-size:12px;\n                  font-weight:bold;\">\n                  {{$json[\"status\"] | upper}}\n                </span>\n              </div>\n\n            </td>\n          </tr>\n\n          <!-- Footer -->\n          <tr>\n            <td style=\"background:#0f172a; color:#94a3b8; padding:15px; text-align:center; font-size:12px;\">\n              \u00a9 2026 AI Helpdesk System \u2022 Ticket Auto-Generated\n            </td>\n          </tr>\n\n        </table>\n\n      </td>\n    </tr>\n  </table>\n\n</body>\n</html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e47bc084-832b-4586-9cf5-f4131c6d3ce4",
+      "name": "Send a message",
+      "webhookId": "920da051-4ca2-49e5-8c55-903dd188c882",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "DIn6tV0VHSSWVFUH",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "heranhr0@gmail.com",
+        "subject": "New complaint received:",
+        "message": "=<!DOCTYPE html>\n<html>\n<body style=\"margin:0; padding:0; background:#0f172a; font-family:Segoe UI, Arial, sans-serif;\">\n\n  <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"padding:40px 0;\">\n    <tr>\n      <td align=\"center\">\n\n        <!-- Main Card -->\n        <table width=\"600\" cellspacing=\"0\" cellpadding=\"0\" \n        style=\"background:#ffffff; border-radius:16px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.2);\">\n\n          <!-- Header -->\n          <tr>\n            <td style=\"background:linear-gradient(135deg,#6366f1,#3b82f6); padding:25px; color:white;\">\n              <h1 style=\"margin:0; font-size:22px;\">\ud83d\ude80 Helpdesk AI System</h1>\n              <p style=\"margin:5px 0 0; opacity:0.9;\">New Ticket Created</p>\n            </td>\n          </tr>\n\n          <!-- Body -->\n          <tr>\n            <td style=\"padding:25px; color:#1e293b;\">\n\n              <!-- Complaint -->\n              <p style=\"margin:0; font-weight:bold; color:#475569;\">\ud83d\udcdd Complaint</p>\n              <div style=\"\n                margin-top:8px;\n                padding:15px;\n                background:#f1f5f9;\n                border-left:5px solid #3b82f6;\n                border-radius:8px;\n                font-size:14px;\">\n                {{$json[\"text\"]}}\n              </div>\n\n              <!-- Info Table -->\n              <table width=\"100%\" style=\"margin-top:20px; font-size:14px;\">\n                <tr>\n                  <td style=\"padding:10px; background:#f8fafc; border-radius:8px;\">\n                    <b>\ud83d\udcc2 Category</b><br>\n                    <span style=\"color:#3b82f6; font-weight:bold;\">\n                      {{$json[\"category\"]}}\n                    </span>\n                  </td>\n\n                  <td style=\"width:10px;\"></td>\n\n                  <td style=\"padding:10px; background:#f8fafc; border-radius:8px;\">\n                    <b>\ud83d\udce7 Customer</b><br>\n                    <span style=\"color:#334155;\">\n                      {{$json[\"email\"]}}\n                    </span>\n                  </td>\n                </tr>\n\n                <tr><td colspan=\"3\" style=\"height:10px;\"></td></tr>\n\n                <tr>\n                  <td style=\"padding:10px; background:#f8fafc; border-radius:8px;\">\n                    <b>\ud83d\udc68\u200d\ud83d\udcbb Assigned To</b><br>\n                    <span style=\"color:#6366f1; font-weight:bold;\">\n                      {{$json[\"assigned_to\"]}}\n                    </span>\n                  </td>\n\n                  <td></td>\n\n                  <td style=\"padding:10px; background:#f8fafc; border-radius:8px;\">\n                    <b>\u23f0 Timestamp</b><br>\n                    <span style=\"color:#64748b;\">\n                      {{$json[\"timestamp\"]}}\n                    </span>\n                  </td>\n                </tr>\n              </table>\n\n              <!-- Status Badge -->\n              <div style=\"margin-top:20px;\">\n                <span style=\"\n                  background:#22c55e;\n                  color:white;\n                  padding:8px 16px;\n                  border-radius:20px;\n                  font-size:12px;\n                  font-weight:bold;\">\n                  {{$json[\"status\"] | upper}}\n                </span>\n              </div>\n\n            </td>\n          </tr>\n\n          <!-- Footer -->\n          <tr>\n            <td style=\"background:#0f172a; color:#94a3b8; padding:15px; text-align:center; font-size:12px;\">\n              \u00a9 2026 AI Helpdesk System \u2022 Ticket Auto-Generated\n            </td>\n          </tr>\n\n        </table>\n\n      </td>\n    </tr>\n  </table>\n\n</body>\n</html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        144,
+        608
+      ],
+      "id": "37d36bfe-50b6-4fec-a61c-fb489fcf5208",
+      "name": "Send a message1",
+      "webhookId": "2bcb56f9-34ef-4cec-8bdc-d12f48bb579d",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "DIn6tV0VHSSWVFUH",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "alphaknight193@gmail.com",
+        "subject": "New complaint received:",
+        "message": "=<!DOCTYPE html>\n<html>\n<body style=\"margin:0; padding:0; background:#0f172a; font-family:Segoe UI, Arial, sans-serif;\">\n\n  <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"padding:40px 0;\">\n    <tr>\n      <td align=\"center\">\n\n        <!-- Main Card -->\n        <table width=\"600\" cellspacing=\"0\" cellpadding=\"0\" \n        style=\"background:#ffffff; border-radius:16px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.2);\">\n\n          <!-- Header -->\n          <tr>\n            <td style=\"background:linear-gradient(135deg,#6366f1,#3b82f6); padding:25px; color:white;\">\n              <h1 style=\"margin:0; font-size:22px;\">\ud83d\ude80 Helpdesk AI System</h1>\n              <p style=\"margin:5px 0 0; opacity:0.9;\">New Ticket Created</p>\n            </td>\n          </tr>\n\n          <!-- Body -->\n          <tr>\n            <td style=\"padding:25px; color:#1e293b;\">\n\n              <!-- Complaint -->\n              <p style=\"margin:0; font-weight:bold; color:#475569;\">\ud83d\udcdd Complaint</p>\n              <div style=\"\n                margin-top:8px;\n                padding:15px;\n                background:#f1f5f9;\n                border-left:5px solid #3b82f6;\n                border-radius:8px;\n                font-size:14px;\">\n                {{$json[\"text\"]}}\n              </div>\n\n              <!-- Info Table -->\n              <table width=\"100%\" style=\"margin-top:20px; font-size:14px;\">\n                <tr>\n                  <td style=\"padding:10px; background:#f8fafc; border-radius:8px;\">\n                    <b>\ud83d\udcc2 Category</b><br>\n                    <span style=\"color:#3b82f6; font-weight:bold;\">\n                      {{$json[\"category\"]}}\n                    </span>\n                  </td>\n\n                  <td style=\"width:10px;\"></td>\n\n                  <td style=\"padding:10px; background:#f8fafc; border-radius:8px;\">\n                    <b>\ud83d\udce7 Customer</b><br>\n                    <span style=\"color:#334155;\">\n                      {{$json[\"email\"]}}\n                    </span>\n                  </td>\n                </tr>\n\n                <tr><td colspan=\"3\" style=\"height:10px;\"></td></tr>\n\n                <tr>\n                  <td style=\"padding:10px; background:#f8fafc; border-radius:8px;\">\n                    <b>\ud83d\udc68\u200d\ud83d\udcbb Assigned To</b><br>\n                    <span style=\"color:#6366f1; font-weight:bold;\">\n                      {{$json[\"assigned_to\"]}}\n                    </span>\n                  </td>\n\n                  <td></td>\n\n                  <td style=\"padding:10px; background:#f8fafc; border-radius:8px;\">\n                    <b>\u23f0 Timestamp</b><br>\n                    <span style=\"color:#64748b;\">\n                      {{$json[\"timestamp\"]}}\n                    </span>\n                  </td>\n                </tr>\n              </table>\n\n              <!-- Status Badge -->\n              <div style=\"margin-top:20px;\">\n                <span style=\"\n                  background:#22c55e;\n                  color:white;\n                  padding:8px 16px;\n                  border-radius:20px;\n                  font-size:12px;\n                  font-weight:bold;\">\n                  {{$json[\"status\"] | upper}}\n                </span>\n              </div>\n\n            </td>\n          </tr>\n\n          <!-- Footer -->\n          <tr>\n            <td style=\"background:#0f172a; color:#94a3b8; padding:15px; text-align:center; font-size:12px;\">\n              \u00a9 2026 AI Helpdesk System \u2022 Ticket Auto-Generated\n            </td>\n          </tr>\n\n        </table>\n\n      </td>\n    </tr>\n  </table>\n\n</body>\n</html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        112,
+        1136
+      ],
+      "id": "d480abf1-d5e6-4ae4-8f66-99d8d2219dc6",
+      "name": "Send a message2",
+      "webhookId": "5fd0acdc-83e6-4322-86d6-2d6cd158b287",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "DIn6tV0VHSSWVFUH",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
