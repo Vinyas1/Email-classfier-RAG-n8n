@@ -313,3 +313,108 @@
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
+      "position": [
+        -272,
+        160
+      ],
+      "id": "4c8fe9fe-e7cb-4daa-bcae-f4bbcf629437",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "tickets",
+          "mode": "name"
+        },
+        "dataMode": "defineBelow",
+        "valuesToSend": {
+          "values": [
+            {
+              "column": "text",
+              "value": "={{$json[\"text\"]}}"
+            },
+            {
+              "column": "category",
+              "value": "={{$json[\"category\"]}}"
+            },
+            {
+              "column": "timestamp",
+              "value": "={{$json[\"timestamp\"]}}"
+            },
+            {
+              "column": "email",
+              "value": "={{$json[\"email\"]}}"
+            },
+            {
+              "column": "status",
+              "value": "open"
+            },
+            {
+              "column": "assigned_to",
+              "value": "={{$json[\"assigned_to\"]}}"
+            },
+            {
+              "column": "draft_reply",
+              "value": "={{$json[\"draft_reply\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.5,
+      "position": [
+        0,
+        208
+      ],
+      "id": "7fd94923-24f5-485f-a64e-57dd2a37a1a7",
+      "name": "Insert rows in a table4",
+      "credentials": {
+        "mySql": {
+          "id": "oara3J49dthlRC0P",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a77ac196-cc37-4369-a225-dfb2e0fd01ee",
+              "name": "text",
+              "value": "={{$json[\"textPlain\"] || $json[\"snippet\"] || $json[\"subject\"]}}",
+              "type": "string"
+            },
+            {
+              "id": "45bf94f7-0ab1-42d4-8682-f141e3d73b3e",
+              "name": "email",
+              "value": "={{$json[\"From\"].match(/<(.+?)>/)?.[1] || $json[\"From\"]}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1040,
+        512
+      ],
+      "id": "ab6e78ea-d225-40be-a701-1b1f824fb1b2",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -784,
+        656
+      ],
