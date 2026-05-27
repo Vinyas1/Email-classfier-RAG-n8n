@@ -24,3 +24,28 @@ if not GROQ_API_KEY:
 
 client = Groq(api_key=GROQ_API_KEY)
 
+VALID_CATEGORIES = {"network", "hardware", "software", "access"}
+
+
+def preprocess(text: str) -> str:
+    text = str(text).strip()
+    text = re.sub(
+        r'(best regards|regards|sincerely|thank you|thanks)[,.\s\w]*$',
+        '', text, flags=re.IGNORECASE
+    )
+    text = re.sub(
+        r'^(dear\s+[\w\s,\[\]]+?,|hi[\s,]+|hello[\s,]+)',
+        '', text, flags=re.IGNORECASE
+    )
+    text = re.sub(r'\s+', ' ', text).strip()
+    return text
+
+
+def predict_category(text: str) -> str:
+    cleaned = preprocess(text)
+
+    prompt = f"""You are an IT helpdesk complaint classifier.
+
+Classify the following complaint email into EXACTLY one of these four categories:
+
+- network  : WiFi, internet, LAN, VPN connectivity, network drives, bandwidth, DNS, connection drops
