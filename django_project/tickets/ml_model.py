@@ -75,3 +75,28 @@ Reply with ONLY one word â€” the category name. Nothing else. No explanatio
         return _retry(cleaned)
 
     except Exception as e:
+        print(f"[ml_model] Groq error: {e}")
+        return "unclassified"
+
+
+def _retry(text: str) -> str:
+    try:
+        response = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[{
+                "role": "user",
+                "content": (
+                    f"Classify this IT complaint into one word only.\n"
+                    f"Options: network, hardware, software, access\n"
+                    f"Complaint: {text}\n"
+                    f"Answer (one word only):"
+                )
+            }],
+            max_tokens=5,
+            temperature=0,
+        )
+        category = response.choices[0].message.content.strip().lower()
+        category = re.sub(r'[^a-z]', '', category)
+        return category if category in VALID_CATEGORIES else "unclassified"
+    except Exception:
+        return "unclassified"
