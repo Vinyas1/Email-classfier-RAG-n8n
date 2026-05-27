@@ -128,3 +128,36 @@ def ingest_docs_folder(docs_dir: Path = DOCS_DIR, chunk_size: int = 800) -> int:
 
 
 # â”€â”€ Retrieval + generation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+def retrieve_similar(query_text: str, k: int = 3) -> list[dict]:
+    """Return the k most similar past tickets/docs for a new email."""
+    collection = _get_collection()
+    if collection.count() == 0:
+        return []
+
+    results = collection.query(query_texts=[query_text], n_results=min(k, collection.count()))
+
+    matches = []
+    for doc, meta, dist in zip(
+        results["documents"][0], results["metadatas"][0], results["distances"][0]
+    ):
+        matches.append({"text": doc, "metadata": meta, "distance": dist})
+    return matches
+
+
+def draft_reply(ticket_text: str, category: str, retrieved: list[dict]) -> str:
+    """Ask Groq to draft a reply, grounded in the retrieved context.
+
+    This is the "generation" half of RAG - it never answers from the
+    model's general knowledge alone, it's told to lean on the retrieved
+    similar tickets for how this category of issue is normally resolved.
+    """
+    if _client is None:
+        return "[draft_reply unavailable: GROQ_API_KEY not set]"
+
+    if retrieved:
+        context_block = "\n\n".join(
+            f"Similar past ticket (category: {m['metadata'].get('category', 'unknown')}):\n{m['text']}"
+            for m in retrieved
+        )
+    else:
