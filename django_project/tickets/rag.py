@@ -63,3 +63,36 @@ def ingest_tickets_csv(csv_path: Path = DATASET_CSV, batch_size: int = 200) -> i
     docs, metadatas, ids = [], [], []
     count = 0
 
+    with open(csv_path, newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for i, row in enumerate(reader):
+            subject = (row.get("ticket_subject") or "").strip()
+            description = (row.get("ticket_description") or "").strip()
+            if not subject and not description:
+                continue
+
+            text = f"{subject}\n{description}".strip()
+            docs.append(text)
+            metadatas.append({
+                "source": "tickets.csv",
+                "category": row.get("category", "") or "unknown",
+                "subcategory": row.get("subcategory", "") or "",
+                "device_type": row.get("device_type", "") or "",
+            })
+            ids.append(f"ticket-{i}")
+
+            if len(docs) >= batch_size:
+                collection.upsert(documents=docs, metadatas=metadatas, ids=ids)
+                count += len(docs)
+                docs, metadatas, ids = [], [], []
+
+    if docs:
+        collection.upsert(documents=docs, metadatas=metadatas, ids=ids)
+        count += len(docs)
+
+    return count
+
+
+def ingest_docs_folder(docs_dir: Path = DOCS_DIR, chunk_size: int = 800) -> int:
+    """Embed any .txt/.md files dropped in knowledge_base/docs/.
+
