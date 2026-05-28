@@ -96,3 +96,35 @@ def ingest_tickets_csv(csv_path: Path = DATASET_CSV, batch_size: int = 200) -> i
 def ingest_docs_folder(docs_dir: Path = DOCS_DIR, chunk_size: int = 800) -> int:
     """Embed any .txt/.md files dropped in knowledge_base/docs/.
 
+    This is where future SOPs, runbooks, or FAQ docs go. Each file is
+    split into rough fixed-size chunks (simple char-based chunking -
+    good enough for short SOPs; swap for a smarter splitter if your
+    docs get long and structured).
+    """
+    collection = _get_collection()
+    docs_dir.mkdir(parents=True, exist_ok=True)
+
+    docs, metadatas, ids = [], [], []
+    count = 0
+
+    for path in sorted(docs_dir.glob("*")):
+        if path.suffix.lower() not in (".txt", ".md"):
+            continue
+        text = path.read_text(encoding="utf-8").strip()
+        if not text:
+            continue
+
+        chunks = [text[i:i + chunk_size] for i in range(0, len(text), chunk_size)]
+        for j, chunk in enumerate(chunks):
+            docs.append(chunk)
+            metadatas.append({"source": path.name, "category": "doc", "subcategory": "", "device_type": ""})
+            ids.append(f"doc-{path.stem}-{j}")
+            count += 1
+
+    if docs:
+        collection.upsert(documents=docs, metadatas=metadatas, ids=ids)
+
+    return count
+
+
+# â”€â”€ Retrieval + generation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
