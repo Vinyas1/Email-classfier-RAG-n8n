@@ -49,3 +49,29 @@ def predict_category(text: str) -> str:
 Classify the following complaint email into EXACTLY one of these four categories:
 
 - network  : WiFi, internet, LAN, VPN connectivity, network drives, bandwidth, DNS, connection drops
+- hardware : laptop, printer, monitor, keyboard, mouse, battery, charger, scanner, webcam, docking station, physical devices
+- software : applications, ERP, crash, slow performance, installation errors, OS issues, Teams, Zoom, Excel, browser, database errors
+- access   : password reset, account locked, login issues, permissions, MFA, OTP, credentials, account provisioning
+
+Complaint:
+\"\"\"{cleaned}\"\"\"
+
+Reply with ONLY one word â€” the category name. Nothing else. No explanation."""
+
+    try:
+        response = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=5,
+            temperature=0,
+        )
+
+        category = response.choices[0].message.content.strip().lower()
+        category = re.sub(r'[^a-z]', '', category)
+
+        if category in VALID_CATEGORIES:
+            return category
+
+        return _retry(cleaned)
+
+    except Exception as e:
