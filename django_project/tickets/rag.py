@@ -161,3 +161,35 @@ def draft_reply(ticket_text: str, category: str, retrieved: list[dict]) -> str:
             for m in retrieved
         )
     else:
+        context_block = "(No similar past tickets found - use general best practice for this category.)"
+
+    prompt = f"""You are an IT helpdesk agent drafting a first-pass reply to a support email.
+
+STRICT RULES - follow these exactly:
+- Never use placeholders like [agent name], [customer name], [your name] or any text in square brackets.
+- Always start the email with exactly: "Hi,"
+- Write the full reply with no blanks to fill in.
+
+Ticket category: {category}
+
+New ticket:
+\"\"\"{ticket_text}\"\"\"
+
+Context from similar past tickets:
+{context_block}
+
+Write a short, helpful, professional draft reply to the customer. Base your
+troubleshooting suggestions on the patterns in the similar past tickets where
+relevant. Do not invent specific account details. This draft will be reviewed
+by a human agent before sending, so it's fine to leave placeholders like
+[agent name] where appropriate.
+
+Reply with ONLY the email body. No subject line, no explanation."""
+
+    response = _client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[{"role": "user", "content": prompt}],
+        max_tokens=300,
+        temperature=0.3,
+    )
+    return response.choices[0].message.content.strip()
