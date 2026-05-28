@@ -9,3 +9,14 @@ class Command(BaseCommand):
         self.stdout.write("Ingesting dataset/tickets.csv ...")
         n_tickets = ingest_tickets_csv()
         self.stdout.write(self.style.SUCCESS(f"  embedded {n_tickets} past tickets"))
+
+        self.stdout.write(f"Ingesting docs from {DOCS_DIR} ...")
+        n_docs = ingest_docs_folder()
+        if n_docs:
+            self.stdout.write(self.style.SUCCESS(f"  embedded {n_docs} doc chunks"))
+        else:
+            self.stdout.write(
+                f"  no docs found yet - drop .txt/.md SOPs into {DOCS_DIR} and re-run this command"
+            )
+
+        self.stdout.write(self.style.SUCCESS("Knowledge base ready."))
