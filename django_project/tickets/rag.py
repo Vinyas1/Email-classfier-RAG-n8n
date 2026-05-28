@@ -31,3 +31,35 @@ DATASET_CSV = BASE_DIR / "dataset" / "tickets.csv"
 DOCS_DIR = BASE_DIR / "django_project" / "knowledge_base" / "docs"
 CHROMA_DIR = BASE_DIR / "django_project" / "chroma_db"
 COLLECTION_NAME = "support_knowledge"
+
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+_client = Groq(api_key=GROQ_API_KEY) if GROQ_API_KEY else None
+
+
+def _get_collection():
+    """Open (or create) the persistent Chroma collection.
+
+    Uses Chroma's bundled default embedding function (all-MiniLM-L6-v2,
+    runs locally on CPU, no API key needed) so embedding cost is zero.
+    """
+    chroma_client = chromadb.PersistentClient(path=str(CHROMA_DIR))
+    return chroma_client.get_or_create_collection(name=COLLECTION_NAME)
+
+
+# â”€â”€ Ingestion â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+def ingest_tickets_csv(csv_path: Path = DATASET_CSV, batch_size: int = 200) -> int:
+    """Embed every row of tickets.csv into the vector store.
+
+    Each ticket becomes one document: "<subject>\n<description>", tagged
+    with category/subcategory/device_type as metadata so results can be
+    filtered or displayed alongside the draft reply.
+    """
+    collection = _get_collection()
+
+    if not csv_path.exists():
+        raise FileNotFoundError(f"Dataset not found at {csv_path}")
+
+    docs, metadatas, ids = [], [], []
+    count = 0
+
