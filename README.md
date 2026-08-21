@@ -74,24 +74,4 @@ And `n8n start` in a second terminal.
 - access   â†’ password, account locked, permissions, MFA
 - unclassified â†’ Groq could not determine category (rare)
 
-## File Structure
-```
-email-classifier-rag/
-â”œâ”€â”€ dataset/
-â”‚   â””â”€â”€ tickets.csv
-â”œâ”€â”€ django_project/
-â”‚   â”œâ”€â”€ django_project/        â† Django settings, urls
-â”‚   â”œâ”€â”€ knowledge_base/
-â”‚   â”‚   â””â”€â”€ docs/               â† drop your SOPs/FAQs here
-â”‚   â”œâ”€â”€ chroma_db/               â† generated, gitignored
-â”‚   â”œâ”€â”€ tickets/
-â”‚   â”‚   â”œâ”€â”€ ml_model.py         â† Groq classifier (env-var API key)
-â”‚   â”‚   â”œâ”€â”€ rag.py              â† embeddings, retrieval, grounded reply drafting
-â”‚   â”‚   â”œâ”€â”€ management/commands/build_kb.py
-â”‚   â”‚   â”œâ”€â”€ views.py            â† classify_ticket + draft_reply_view
-â”‚   â”‚   â””â”€â”€ ...
-â”‚   â””â”€â”€ manage.py
-â”œâ”€â”€ n8n workflow.json
-â”œâ”€â”€ .env.example
-â””â”€â”€ requirements.txt
-```
+
