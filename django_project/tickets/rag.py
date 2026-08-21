@@ -46,7 +46,6 @@ def _get_collection():
     return chroma_client.get_or_create_collection(name=COLLECTION_NAME)
 
 
-# â”€â”€ Ingestion â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 def ingest_tickets_csv(csv_path: Path = DATASET_CSV, batch_size: int = 200) -> int:
     """Embed every row of tickets.csv into the vector store.
@@ -127,7 +126,6 @@ def ingest_docs_folder(docs_dir: Path = DOCS_DIR, chunk_size: int = 800) -> int:
     return count
 
 
-# â”€â”€ Retrieval + generation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 def retrieve_similar(query_text: str, k: int = 3) -> list[dict]:
     """Return the k most similar past tickets/docs for a new email."""
